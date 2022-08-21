@@ -2,6 +2,7 @@ import pygame
 from menu import *
 from tiles import *
 from spritesheet import Spritesheet
+from object import *
 
 class Game():
     def __init__(self):
@@ -20,6 +21,10 @@ class Game():
         self.curr_menu = self.main_menu
         self.spritesheet = Spritesheet('./sprite/temp_sheet.png')
         self.map = TileLayerMap('./map/level1/', self.spritesheet)
+        ## 몬스터 ____________
+        self.monster_spr = pygame.image.load("./images/monster.png")
+        self.monster = MonsterObject(spr=self.monster_spr, coord=(200,300), hp_max=100, speed=0.01)
+        ########### _____________
 
     # def game_loop(self):
     #     while self.playing: # Loop
@@ -42,6 +47,12 @@ class Game():
             #     pass
             self.map.draw_map(self.display)
             self.window.blit(self.display, (0, 0))
+            
+             ## 몬스터 ____________
+            self.monster.x_pos += self.monster.speed
+            self.monster.draw(self.window)
+            ########### _____________
+            
             pygame.display.update()
             self.reset_keys()   # 다시 모든key False로, def지정 함수
 
