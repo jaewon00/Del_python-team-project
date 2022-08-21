@@ -21,3 +21,7 @@ class Spritesheet:
         x, y, w, h = sprite["x"], sprite["y"], sprite["w"], sprite["h"]
         image = self.get_sprite(x, y, w, h) # 이미지 파일 잘라오기.
         return image
+
+    def get_stage_info(self, stage):
+        return self.data['meta'][stage]['next_stage'], int(self.data['meta'][stage]['time'])
+        
