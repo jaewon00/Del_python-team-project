@@ -1,7 +1,12 @@
 import pygame
 from menu import *
 from tiles import *
+from player import *
 from spritesheet import Spritesheet
+# cat = Player()
+# cat.update()
+# cat.keyboard()
+# cat.draw(map)
 
 class Game():
     def __init__(self):
@@ -20,32 +25,35 @@ class Game():
         self.curr_menu = self.main_menu
         self.spritesheet = Spritesheet('./sprite/temp_sheet.png')
         self.map = TileLayerMap('./map/level1/', self.spritesheet)
-
-    # def game_loop(self):
-    #     while self.playing: # Loop
-    #         self.check_events() # event 확인, 아래 def로 지정한 함수
-    #         if self.START_KEY:
-    #             self.playing = False
-    #         self.display.fill(self.BLUE)
-    #         self.draw_text('Thanks for Playing', 40, self.DISPLAY_W / 2, self.DISPLAY_H / 2)    # 화면 센터에 표시, def지정 함수
-    #         self.window.blit(self.display, (0, 0))
-    #         pygame.display.update()
-    #         self.reset_keys()   # 다시 모든key False로, def지정 함수
-
+        self.player = Player()
+        
     def game_loop(self):
         while self.playing: # Loop
             self.check_events() # event 확인, 아래 def로 지정한 함수
+        
             if self.BACK_KEY:
                 self.playing = False
             # if map2.collsion_tiles(player_rect) :
             #     # 맵 충돌처리, 플레이어가 더 이상 가지못하도록 막기.
             #     pass
             self.map.draw_map(self.display)
+            
+           
+            self.player.update()
+            self.player.updatekeyboard()
+            self.player.draw(self.display)
             self.window.blit(self.display, (0, 0))
             pygame.display.update()
-            self.reset_keys()   # 다시 모든key False로, def지정 함수
 
-
+          
+            # self.reset_keys()   # 다시 모든key False로, def지정 함수
+    #########추가###########
+    # def new(self):
+    #     self.all_sprites = pygame.sprite.LayeredUpdates() # 모든 스프라이트 효과를 한번에 업데이트
+    #     self.blocks = pygame.sprite.LayeredUpdates() # 블럭 업데이트 / config.py에 BLOCK_LAYER 가 지정되어있습니다.
+    # def update(self):
+    #     self.all_sprites.update()
+    #################################################        
     # make game loop
     # check the player inputs and button press
     def check_events(self):
@@ -64,7 +72,7 @@ class Game():
                 if event.key == pygame.K_UP:
                     self.UP_KEY = True
 
-            
+    
     # reset variables
     def reset_keys(self):
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
@@ -78,5 +86,8 @@ class Game():
 
     # Game Start 누르면 화면 전환
 
+
     def change_map(self, levelpath):
         return TileLayerMap(levelpath, self.spritesheet)
+
+   
