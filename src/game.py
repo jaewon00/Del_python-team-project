@@ -4,10 +4,14 @@ from menu import *
 from tiles import *
 from player import *
 from spritesheet import Spritesheet
+
+from object import *
+
 # cat = Player()
 # cat.update()
 # cat.keyboard()
 # cat.draw(map)
+
 
 class Game():
     def __init__(self):
@@ -26,9 +30,16 @@ class Game():
         self.curr_menu = self.main_menu
         self.spritesheet = Spritesheet('./sprite/temp_sheet.png')
         self.map = TileLayerMap('./map/level1/', self.spritesheet)
+
+        ## 몬스터 ____________
+        self.monster_spr = pygame.image.load("./images/monster.png")
+        self.monster = MonsterObject(spr=self.monster_spr, coord=(200,300), hp_max=100, speed=0.01)
+        ########### _____________
+
         self.next_map_name, self.stage_time = self.spritesheet.get_stage_info('./map/level1/')
         print("[LOG] loading start map... & next map is [{}]".format(self.next_map_name))
         self.time_check = 0
+
 
         self.player = Player()
         
@@ -58,6 +69,12 @@ class Game():
             self.player.updatekeyboard()
             self.player.draw(self.display)
             self.window.blit(self.display, (0, 0))
+            
+             ## 몬스터 ____________
+            self.monster.x_pos += self.monster.speed
+            self.monster.draw(self.window)
+            ########### _____________
+            
             pygame.display.update()
 
           
