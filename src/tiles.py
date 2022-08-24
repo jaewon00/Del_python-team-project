@@ -23,6 +23,7 @@ class TileMap():
 
     def draw_map(self, surface): # 메인 함수에서 쓰임. surface(=screen)에 map_surface를 그린다.
         surface.blit(self.map_surface, (0, 0))
+        
 
     def load_map(self): # 각각의 Tile 들을 map_surface 변수에 그린다.
         for tile in self.tiles:
@@ -92,6 +93,7 @@ class TileLayerMap():
         self.start_x, self.start_y = self.layer[0].start_x, self.layer[0].start_y
 
     def draw_map(self, surface):
+        pygame.display.update()
         # layer 순서대로 캔버스에 업데이트. # layer[1].draw_map(canvas)
         for map in self.layer:
             map.draw_map(surface)
