@@ -1,6 +1,5 @@
 from tkinter import Canvas
 from game import *
-from player import *
 game = Game()
 
 while game.running:

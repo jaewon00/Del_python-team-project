@@ -100,7 +100,7 @@ class Player(pygame.sprite.Sprite):
                 elif self.state == 'moving right':
                     self.current_image = self.walking_frames_right[self.current_frame]                   
     def load_frames(self):
-        my_spritesheet = Spritesheet("C:\\Users\\jaewon\\vscodepython\\sprite\\character_sheet.png")
+        my_spritesheet = Spritesheet("./sprite/character_sheet.png")
         self.idle_frames_right = [my_spritesheet.parse_sprite("player2.png"), 
                                  my_spritesheet.parse_sprite("player4.png")]
         self.walking_frames_right = [my_spritesheet.parse_sprite("player5.png"), 

@@ -91,7 +91,7 @@
     "meta": {
         "./map/level1/":
         {
-            "time": 2000,
+            "time": 20000000,
             "next_stage": "./map/level2/"
         },
         "./map/level2/":
