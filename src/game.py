@@ -2,7 +2,12 @@ from operator import truediv
 import pygame
 from menu import *
 from tiles import *
+from player import *
 from spritesheet import Spritesheet
+# cat = Player()
+# cat.update()
+# cat.keyboard()
+# cat.draw(map)
 
 class Game():
     def __init__(self):
@@ -21,26 +26,18 @@ class Game():
         self.curr_menu = self.main_menu
         self.spritesheet = Spritesheet('./sprite/temp_sheet.png')
         self.map = TileLayerMap('./map/level1/', self.spritesheet)
-        
         self.next_map_name, self.stage_time = self.spritesheet.get_stage_info('./map/level1/')
         print("[LOG] loading start map... & next map is [{}]".format(self.next_map_name))
         self.time_check = 0
 
-    # def game_loop(self):
-    #     while self.playing: # Loop
-    #         self.check_events() # event 확인, 아래 def로 지정한 함수
-    #         if self.START_KEY:
-    #             self.playing = False
-    #         self.display.fill(self.BLUE)
-    #         self.draw_text('Thanks for Playing', 40, self.DISPLAY_W / 2, self.DISPLAY_H / 2)    # 화면 센터에 표시, def지정 함수
-    #         self.window.blit(self.display, (0, 0))
-    #         pygame.display.update()
-    #         self.reset_keys()   # 다시 모든key False로, def지정 함수
+        self.player = Player()
+        
 
     def game_loop(self):
         self.time_check = pygame.time.get_ticks()
         while self.playing: # Loop
             self.check_events() # event 확인, 아래 def로 지정한 함수
+        
             if self.BACK_KEY:
                 self.playing = False
             # if map2.collsion_tiles(player_rect) :
@@ -55,11 +52,23 @@ class Game():
                 
             
             self.map.draw_map(self.display)
+            
+           
+            self.player.update()
+            self.player.updatekeyboard()
+            self.player.draw(self.display)
             self.window.blit(self.display, (0, 0))
             pygame.display.update()
-            self.reset_keys()   # 다시 모든key False로, def지정 함수
 
-
+          
+            # self.reset_keys()   # 다시 모든key False로, def지정 함수
+    #########추가###########
+    # def new(self):
+    #     self.all_sprites = pygame.sprite.LayeredUpdates() # 모든 스프라이트 효과를 한번에 업데이트
+    #     self.blocks = pygame.sprite.LayeredUpdates() # 블럭 업데이트 / config.py에 BLOCK_LAYER 가 지정되어있습니다.
+    # def update(self):
+    #     self.all_sprites.update()
+    #################################################        
     # make game loop
     # check the player inputs and button press
     def check_events(self):
@@ -78,7 +87,7 @@ class Game():
                 if event.key == pygame.K_UP:
                     self.UP_KEY = True
 
-            
+    
     # reset variables
     def reset_keys(self):
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
@@ -91,6 +100,7 @@ class Game():
         self.display.blit(text_surface, text_rect)
 
     # Game Start 누르면 화면 전환
+
 
 
     def change_screen(self, alive = True):
@@ -143,4 +153,5 @@ class Game():
         self.time_check = pygame.time.get_ticks()
         # 플레이어 상태 초기화 (무기활성화 등..)
         # 몬스터들 비우기
+
 

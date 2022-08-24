@@ -1,0 +1,77 @@
+{"frames": {
+
+    "player1.png":
+    {
+        "frame" : {"x":1, "y":1, "w":32, "h":32},
+        "spriteSourceSize": {"x":0, "y":0, "w":32, "h":32},
+        "sourceSize" : {"w":128, "h":128}
+
+    },
+
+    "player2.png":
+    {
+        "frame" : {"x":33, "y":1, "w":32, "h":32},
+        "spriteSourceSize": {"x":0, "y":0, "w":32, "h":32},
+        "sourceSize" : {"w":128, "h":128}
+
+    },
+
+    "player3.png":
+    {
+        "frame" : {"x":66, "y":1, "w":32, "h":32},
+        "spriteSourceSize": {"x":0, "y":0, "w":32, "h":32},
+        "sourceSize" : {"w":128, "h":128}
+
+    },
+
+    "player4.png":
+    {
+        "frame" : {"x":99, "y":1, "w":32, "h":32},
+        "spriteSourceSize": {"x":0, "y":0, "w":32, "h":32},
+        "sourceSize" : {"w":128, "h":128}
+
+    },
+    "player5.png":
+    {
+        "frame" : {"x":99, "y":33, "w":32, "h":32},
+        "spriteSourceSize": {"x":0, "y":0, "w":32, "h":32},
+        "sourceSize" : {"w":128, "h":128}
+
+    },
+    "player6.png":
+    {
+        "frame" : {"x":133, "y":33, "w":32, "h":32},
+        "spriteSourceSize": {"x":0, "y":0, "w":32, "h":32},
+        "sourceSize" : {"w":128, "h":128}
+
+    },
+    "player7.png":
+    {
+        "frame" : {"x":166, "y":33, "w":32, "h":32},
+        "spriteSourceSize": {"x":0, "y":0, "w":32, "h":32},
+        "sourceSize" : {"w":128, "h":128}
+
+    }
+},
+"meta": {
+
+    
+          "image": {
+            "name": "character_sheet.png",
+        
+            "geometry": {
+              "width": 322,
+              "height": 96,
+              "x": 0,
+              "y": 0
+            }
+           
+        }}}
+        
+
+
+
+
+
+
+
